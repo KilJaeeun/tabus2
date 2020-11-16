@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <button type="button" ondbclick="location.href='/search/'" class="btn btn-primary btn-lg btn-block">전체 길찾기
+        </button>
+        <button type="button" ondbclick="location.href='/search/'" class="btn btn-secondary btn-lg btn-block">보행자 길찾기
+        </button>
+        <button type="button" ondbclick="location.href='/busstop/search/'" class="btn  btn-success btn-lg btn-block">
+            도착예정 버스
+        </button>
+        <button type="button" class="btn btn-danger btn-lg btn-block">카메라 인식</button>
+    </div>
+    <script>
+        window.onload = () => {
+            const all_btns = document.querySelectorAll('button');
+            for (var i = 0; i < all_btns.length; i++) {
+                all_btns[i].addEventListener('click', function (e) {
+                    speech(e["srcElement"])
+                    console.log(e)
+                });
+            }
+
+            function speech(obj) {
+//one click
+
+                var is = true;
+                var iTimeout = 500; //500/1000 초 이 값을 조절하면 더블클릭까지 기다릴 시간을 조정할 수 있음
+                eval("obj._fnOnClick = function () { return(click_event(obj)) }");
+                obj._timeoutid = window.setTimeout(obj._fnOnClick, iTimeout, "JavaScript");
+
+
+                var utterThis = new SpeechSynthesisUtterance(obj.innerText);
+                var synth = window.speechSynthesis;
+                synth.speak(utterThis);
+                console.log("work")
+                return is;
+            }
+            function goto(){}
+
+
+        }
+
+
+    </script>
+{% endblock %}
+
