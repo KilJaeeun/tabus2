@@ -3,16 +3,27 @@
 
 {% block content %}
     <div class="container">
-        <button type="button" ondbclick="location.href='/search/'" class="btn btn-primary btn-lg btn-block">전체 길찾기
+        <button type="button" onclick=" clickHandle(this ,'/search/')" class="btn btn-primary btn-lg btn-block">전체 길찾기
         </button>
-        <button type="button" ondbclick="location.href='/search/'" class="btn btn-secondary btn-lg btn-block">보행자 길찾기
-        </button>
-        <button type="button" ondbclick="location.href='/busstop/search/'" class="btn  btn-success btn-lg btn-block">
+
+        <button type="button" onclick=" clickHandle(this ,'/busstop/search/')"  ondbclick="location.href='/busstop/search/'" class="btn  btn-success btn-lg btn-block">
             도착예정 버스
         </button>
         <button type="button" class="btn btn-danger btn-lg btn-block">카메라 인식</button>
     </div>
     <script>
+        var DELAY = 700, clicks = 0, timer = null;
+
+        $(function () {
+
+            $("button")
+                .on("dblclick", function (e) {
+                    e.preventDefault();  //cancel system double-click event
+                });
+
+        });
+
+
         window.onload = () => {
             const all_btns = document.querySelectorAll('button');
             for (var i = 0; i < all_btns.length; i++) {
@@ -22,27 +33,44 @@
                 });
             }
 
-            function speech(obj) {
-//one click
-
-                var is = true;
-                var iTimeout = 500; //500/1000 초 이 값을 조절하면 더블클릭까지 기다릴 시간을 조정할 수 있음
-                eval("obj._fnOnClick = function () { return(click_event(obj)) }");
-                obj._timeoutid = window.setTimeout(obj._fnOnClick, iTimeout, "JavaScript");
-
-
-                var utterThis = new SpeechSynthesisUtterance(obj.innerText);
-                var synth = window.speechSynthesis;
-                synth.speak(utterThis);
-                console.log("work")
-                return is;
-            }
-            function goto(){}
-
 
         }
 
 
+        function clickHandle(obj, place) {
+            var $this = $(obj);
+            if ($this.hasClass('clicked')) {
+                goto(place)
+                //here is your code for double click
+                //  return;a
+            } else {
+                $this.addClass('clicked');
+                speech(obj)
+                //your code for single click
+                setTimeout(function () {
+                    $this.removeClass('clicked');
+                }, 500);
+            }//end of else
+        }
+
+        function speech(obj) {
+//one click
+            var is = true;
+            var iTimeout = 500; //500/1000 초 이 값을 조절하면 더블클릭까지 기다릴 시간을 조정할 수 있음
+            eval("obj._fnOnClick = function () { return(click_event(obj)) }");
+            obj._timeoutid = window.setTimeout(obj._fnOnClick, iTimeout, "JavaScript");
+
+
+            var utterThis = new SpeechSynthesisUtterance(obj.innerText);
+            var synth = window.speechSynthesis;
+            synth.speak(utterThis);
+            console.log("work")
+            return is;
+        }
+
+        function goto(place) {
+            return location.href = place;
+        }
     </script>
 {% endblock %}
 
