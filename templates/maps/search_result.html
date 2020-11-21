@@ -93,18 +93,27 @@
                                         map: map // 마커가 등록될 지도 객체
                                     });
 
+                                {#                    <button class="search_result shadow">#}
+                                {#                        <div class="left">#}
+                                {#                            <img src="{% static 'img/장소@2x.png' %}" alt="위치 태그">#}
+                                {#                        </div>#}
+                                {#                        <div class="center">#}
+                                {#                            <div class="top">홍익대학교 서울캠퍼스</div>#}
+                                {#                            <div class="down">서울시 마포구 99-22번지</div>#}
+                                {#                        </div>#}
+                                {#                        <div class="right">19km</div>#}
+                                {#                    </button>#}
+
                                 // 결과창에 나타날 검색 결과 html
-                                innerHtml += "<li>" +
-                                    "<div><img src='http://tmapapis.sktelecom.com/upload/tmap/marker/pin_b_m_" + k + ".png' style='vertical-align:middle;'/>" + "" +
-                                    "<span ondbclick='gotoNavigation("
+                                innerHtml += "  <button class=\"search_result shadow\" ondbclick='gotoNavigation("
                                     + "\""
                                     + lat + "@" + lon + "@" + name
                                     + "\""
-                                    + ")'>"
+                                    + ")'>" +
+                                    "  <div class=\"left\"><img src='/static/img/장소%402x.png' />  </div>" + "" +
+                                    " <div class=\"center\"> <div class=\"top\"> "
                                     + name
-                                    + "</span>  <button type='button' name='sendBtn' ondbclick='poiDetail("
-                                    + id
-                                    + ");'>상세보기</button></div></li>";
+                                    + "</div>   <div class=\"down\">서울시 마포구 99-22번지</div> </div>   <div class=\"right\">19km</div> </div></button>";
 
                                 // 마커들을 담을 배열에 마커 저장
                                 markerArr.push(marker);
@@ -228,101 +237,58 @@
         }
 
     </script>
-    <div class="container" style="
-    display: flex;
-    background: #000000 0% 0% no-repeat padding-box;
-    flex-direction: column;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    height: 100vh;
-    padding-left: 30px;
-    padding-right: 30px;
+    <style>
+        input::placeholder {
+            color: white;
+
+        }
+    </style>
+    <div class="container place-search-result-container">
+        <div class="top-background"
+
+             style="
+                     background-image: url({% static 'img/마스크 그룹 5@2x.png' %})">
+            <div class="input_box">
+                <input
+                        placeholder="'호암초등학교'검색결과"
+                        type="search"
 
 
+                        class="text_custom form-control" id="searchKeyword" name="searchKeyword"/>
 
-
-">
-        <style>
-            input::placeholder {
-                color: white;
-
-            }
-        </style>
-        <div style="font: normal normal bold 24px/29px Noto Sans CJK KR;color: white;
-margin-top: 61px;
-">목적지를 검색하세요 <img src="{% static 'img/타원 31.svg' %}" alt="온점">
-        </div>
-        <div style="font: normal normal normal 14px/17px Noto Sans CJK KR;
-color: white; margin-top: 15px; margin-bottom: 81px">
-            키보드 또는 음성으로 목적지를 검색하세요.
-        </div>
-        <div class="" style="display: flex;
-    justify-content: center;
-    align-items: center;
-width: 300px;
-height: 43px;
-border: 2px solid var(--unnamed-color-ffffff);
-border: 2px solid #FFFFFF;
-border-radius: 30px;">
-            <input
-                    placeholder="키보드로 검색"
-                    type="search"
-                    style="    background-color: transparent;
-    border: none;
-    color: white;
-    padding-left: 20px;
-    font-size: 17px; "
-
-                    class="text_custom form-control" id="searchKeyword" name="searchKeyword"/>
-
-            <button id="btn_select"
-                    style="background-color: transparent;
-    border: none;"
-                    class=""><img src="{% static 'img/검색.svg' %}" alt="검색 버튼"></button>
-        </div>
-        <div class="voice-search" style="margin-top: 24px;
-    /* width: 100%; */
-    margin: 24px auto;
-    display: flex;
-    justify-content: center;">
-            <img style="width: 90px;
-height: 90px;"
-                 src="{% static 'img/그룹 125@2x.png' %}" alt="음성검색">
+                <button id="btn_select"
+                ><img src="{% static 'img/검색.svg' %}" alt="검색 버튼"></button>
+            </div>
         </div>
 
-        <div>
-            <div style="width: 100%; float:left;">
 
-                <div class="rst_wrap">
-                    <div class="rst mCustomScrollbar">
-                        <ul id="searchResult" name="searchResult">
+        <div class="search_result_buttons_container">
+            <button class="help-text shadow">
+                목적지를 선택하면 경로를 안내합니다.
+            </button>
+            <div class="rst_wrap" style="overflow-y: auto;height: 236px;">
+                <div class="rst mCustomScrollbar" id="searchResult">
 
-                        </ul>
-                    </div>
                 </div>
             </div>
-            <div id="map_div" class="map_wrap" style="float:left"></div>
         </div>
+        <div id="map_div" class="map_wrap" style="float:left"></div>
     </div>
-    <div class="round"
-         style="    width: 43px;
-    height: 43px;
-    /* margin: auto; */
-    bottom: 20px;
-    /* margin: auto; */
-    z-index: 99999;
-    /* right: 40vw; */
-    left: 159px;
-    position: fixed;">
-        <img src="{% static 'img/메뉴.svg' %}" alt="메뉴">
+    </div>
+    <button class="roundMenuBtn" id="menuBtn"
+            style="      background-image: url({% static 'img/메뉴.svg' %}); ">
 
-    </div>
+
+    </button>
     <script>
         window.onload = () => {
             initTmap();
         }
     </script>
+    <style>
+        button {
+            background-color: transparent !important;
+            border: none;
+        }
+    </style>
 {% endblock %}

@@ -19,10 +19,19 @@ def show_navigation(request):
 
     return render(request, 'maps/navigation.html', data)
 
+
 def search_place(request):
-    return render(request, 'maps/search_place.html')
+    #   return render(request, 'maps/search_place.html')
+    return render(request, 'maps/search_result.html')
+
+
+def search_result(request):
+    return render(request, 'maps/search_result.html')
+
+
 def main(request):
     return render(request, 'main.html')
+
 
 def test(request):
     return render(request, 'maps/test.html')
