@@ -210,6 +210,19 @@ html, body {
     padding-top: 10px;
 }
 
+.backToPedMenu {
+    width: 43px;
+    height: 43px;
+    background-color: transparent;
+    bottom: 20px;
+    border: none;
+    background-position: center;
+    background-size: contain;
+    z-index: 99999;
+    left: 30px;
+    position: fixed;
+}
+
 .roundMenuBtn {
     width: 43px;
     height: 43px;
@@ -228,3 +241,49 @@ html, body {
 }
 
 /* place-search-result-container end */
+.bottom-black-container {
+    position: absolute;
+    color: white;
+    width: 100%;
+    float: left;
+    box-sizing: border-box;
+    border-radius: 30px 30px 0px 0px;
+    background-color: black;
+    bottom: 0px;
+    padding-top: 8px;
+    height: 250px;
+    display: flex;
+    padding-left: 30px;
+    padding-right: 30px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.bottom-black-container .total-result {
+    font-size: 14px;
+    text-align: left;
+    width: 300px;
+    height: 49px;
+    border-radius: 10px;
+    border: none;
+}
+
+.bottom-black-container .direct-road-name {
+    height: 34px;
+    width: 300px;
+    text-align: left;
+    color: #295fff;
+    display: flex;
+    /* padding-left: 20px; */
+    align-items: center;
+}
+
+
+.bottom-black-container .first_things_to_do {
+    min-height: 70px;
+    font-size: 18px;
+    white-space: normal;
+    text-align: left;
+}
