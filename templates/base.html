@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-
     <!-- 합쳐지고 최소화된 최신 CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
@@ -28,12 +27,13 @@
 
 <body>
 {% load static %}
-<div class="container">
+<link rel="stylesheet" href="{% static 'tabus.css' %}">
+<div class="">
     {% block content %}
 
     {% endblock %}
 </div>
-   <!-- 읽어라! 소리!-->
+<!-- 읽어라! 소리!-->
 
 
 </body>

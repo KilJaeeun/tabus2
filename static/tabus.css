@@ -1,0 +1,83 @@
+:root {
+    --unnamed-character-spacing-0: 0px;
+    --color-blue: #295fff;
+    --color-yellow: #EC812C;
+    --color-mint: #44B2B5;
+    --color-light-grey: #424242;
+    --color-dark-grey: #212121;
+    --unnamed-color-ffffff: #FFFFFF;
+    --unnamed-color-707070: #707070;
+
+    /* Font/text values */
+    --unnamed-font-family-noto-sans-cjk-kr: Noto Sans CJK KR;
+    --unnamed-font-style-normal: normal;
+    --unnamed-font-weight-300: 300px;
+    --unnamed-font-weight-normal: normal;
+    --unnamed-font-size-10: 10px;
+    --unnamed-font-size-34: 34px;
+    --unnamed-character-spacing-0: 0px;
+    --unnamed-character-spacing-7-48: 7.48px;
+    --unnamed-line-spacing-12: 12px;
+    --unnamed-line-spacing-41: 41px;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* 폰트 start */
+.font-24-bold {
+
+}
+
+.font-18-white {
+    text-align: center;
+    font: normal normal normal 18px/22px Noto Sans CJK KR;
+    letter-spacing: 0px;
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.font-24-bold {
+
+}
+
+/* 폰트 end */
+/* color start */
+
+
+/* color end */
+/* shadow start*/
+.shadow {
+    box-shadow: 0px 3px 6px #00000080;
+}
+
+/* shadow end*/
+
+.hover {
+    border: 2px solid #295FFF;
+    border-radius: 10px;
+}
+
+.main-box {
+    height: 43px;
+    width: calc(30000vw / 360);
+    background: #000000 0% 0% no-repeat padding-box;
+    border: 2px solid var(--color-light-grey);
+    border-radius: 30px;
+}
+
+.center-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-map-input-container {
+    background: #000000 0% 0% no-repeat padding-box;
+    border-radius: 30px;
+}
