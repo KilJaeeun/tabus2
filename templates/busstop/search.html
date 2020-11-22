@@ -35,10 +35,10 @@
                 <div class="rst mCustomScrollbar" id="searchResult">
                     {% for data in data_list %}
                         <button class="search_result shadow"
-                                ondbclick="location.href=`/busstop/feed/?stationId={{ data.0 }}&busstop={{ data.1 }}` "
+                                onclick="location.href=`/busstop/feed/?stationId={{ data.0 }}&busstop={{ data.1 }}` "
                                 class="busstop-item alert alert-info" role="alert">
                             <div class="left">
-                                <img src="{% static 'img/장소@2x.png' %}" alt="위치 태그">
+                                <img src="{% static 'img/버스정류장아이콘@2x.png' %}" alt="버스정류장 태그">
                             </div>
                             <div class="center">
                                 <div class="top">        {{ data.1 }}</div>
