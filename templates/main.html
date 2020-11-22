@@ -42,14 +42,6 @@
         </button>
     </div>
     <script>
-        var DELAY = 700, clicks = 0, timer = null;
-
-        $(function () {
-            $("button")
-                .on("dblclick", function (e) {
-                    e.preventDefault();  //cancel system double-click event
-                });
-        });
 
 
         /*    window.onload = () => {
@@ -79,23 +71,9 @@
             }//end of else
         }
 
-        function speech(obj) {
-            //one click
-            var is = true;
-
-            var utterThis = new SpeechSynthesisUtterance(obj.innerText);
-            var synth = window.speechSynthesis;
-            synth.speak(utterThis);
-            console.log("work")
-            return is;
-        }
-
-        function goto(place) {
-            return location.href = place;
-        }
 
         /* 좌우 scroll  start
-         */
+
         var oldScrollTop = $(window).scrollTop();
 
         $(window).bind('scroll', function () {
@@ -110,7 +88,7 @@
             }
         });
 
-        /* 좌우 scroll end */
+      좌우 scroll end */
 
 
     </script>
