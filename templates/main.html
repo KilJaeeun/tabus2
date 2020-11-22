@@ -37,33 +37,31 @@
                 class="font-18-white main-box hover center-center ">
             버스 도착 정보
         </button>
-        <button type="button" class="main-box font-18-white hover center-center ">버스 번호 인식</button>
+        <button type="button" onclick=" clickHandle(this ,'/')" class="main-box font-18-white hover center-center ">버스
+            번호 인식
+        </button>
     </div>
     <script>
         var DELAY = 700, clicks = 0, timer = null;
 
         $(function () {
-
             $("button")
                 .on("dblclick", function (e) {
                     e.preventDefault();  //cancel system double-click event
                 });
-
         });
 
 
-        window.onload = () => {
-            const all_btns = document.querySelectorAll('button');
-            for (var i = 0; i < all_btns.length; i++) {
-                all_btns[i].addEventListener('click', function (e) {
-                    speech(e["srcElement"])
-                    console.log(e)
-                });
+        /*    window.onload = () => {
+                const all_btns = document.querySelectorAll('button');
+                for (var i = 0; i < all_btns.length; i++) {
+                    all_btns[i].addEventListener('click', function (e) {
+                        speech(e["srcElement"])
+                        console.log(e)
+                    });
+                }
             }
-
-
-        }
-
+    */
 
         function clickHandle(obj, place) {
             var $this = $(obj);
@@ -82,7 +80,7 @@
         }
 
         function speech(obj) {
-//one click
+            //one click
             var is = true;
 
             var utterThis = new SpeechSynthesisUtterance(obj.innerText);
