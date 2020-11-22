@@ -262,9 +262,10 @@
                 style="background-color: dodgerblue; height: 30px"></button>
         <button class="total-result" id="result" onclick="clickHandle(this,'')"></button>
     </div>
-    <button class="backToPedMenu" id="backToPedMenu"
-            style="      background-image: url({% static 'img/길안내시작.svg' %}); ">
-
+    <button class="backToPedMenu" id="backToPedMenu" onclick="clickHandle(this,'/search/')"
+            style="   color: transparent; overflow: hidden;   background-image: url({% static 'img/길안내시작.svg' %}); "
+    >
+        길찾기 메뉴로
 
     </button>
 
