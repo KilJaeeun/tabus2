@@ -234,7 +234,7 @@ html, body {
     /* margin: auto; */
     z-index: 99999;
     /* right: 40vw; */
-    left: 159px;
+    left: calc(50vw - 21.5px);
     position: fixed;
 }
 
