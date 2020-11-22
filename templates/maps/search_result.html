@@ -18,6 +18,14 @@
             // });
 
             // 2. POI 통합 검색 API 요청
+
+            /*
+                        $('#searchKeyword').keydown(() => {
+                            console.log("key down work")
+                            $("#btn_select").click()
+                        })
+
+             */
             $("#btn_select").click(
                 function () {
                     var searchKeyword = $('#searchKeyword').val(); // 검색 키워드
@@ -93,26 +101,16 @@
                                         map: map // 마커가 등록될 지도 객체
                                     });
 
-                                {#                    <button class="search_result shadow">#}
-                                {#                                <div class="left">#}
-                                {#                                    <img src="{% static 'img/장소@2x.png' %}" alt="위치 태그">#}
-                                {#                                </div>#}
-                                {#                                <div class="center">#}
-                                {#                                    <div class="top">홍익대학교 서울캠퍼스</div>#}
-                                {#                                    <div class="down">서울시 마포구 99-22번지</div>#}
-                                {#                                </div>#}
-                                {#                        <div class="right">19km</div>#}
-                                {#                    </button>#}
 
                                 // 결과창에 나타날 검색 결과 html
-                                innerHtml += " <button class=\"search_result shadow\" onclick='gotoNavigation("
+                                innerHtml += " <button class=\"search_result shadow\" onclick='clickHandle(this,"
                                     + "\""
                                     + lat + "@" + lon + "@" + name
                                     + "\""
                                     + ")'>" +
                                     " <div class=\"left\"><img src='/static/img/장소%402x.png' /> </div>" + "" +
-                                    " <div class=\"center\"> <div class=\"top\"> "
-                                    + name + " </div> <div class=\"down\">서울시 마포구 99-22번지</div> </div>   <div class=\"right\">19km</div> </div></button>";
+                                    " <div class=\"center\"> "
+                                    + name + "  </div>   </div></button>";
 
                                 // 마커들을 담을 배열에 마커 저장
                                 markerArr.push(marker);
@@ -199,6 +197,64 @@
             });
         }
 
+
+    </script>
+    <style>
+        input::placeholder {
+            color: white;
+
+        }
+    </style>
+    <div class="container place-search-result-container">
+        <div class="top-background"
+
+             style="
+                     background-image: url({% static 'img/마스크 그룹 5@2x.png' %})">
+            <div class="input_box">
+                <input onclick=" clickHandle(this,'search')"
+                       placeholder="'호암초등학교'검색결과"
+                       type="search"
+
+                       class="text_custom form-control" id="searchKeyword" name="searchKeyword"/>
+
+                <button id="btn_select" type="button" onclick=" clickHandle(this,'submit')" style="    height: 43px;overflow: hidden;
+    color: transparent;"
+                ><img src="{% static 'img/검색.svg' %}" alt="검색 버튼">검색버튼
+                </button>
+            </div>
+        </div>
+
+
+        <div class="search_result_buttons_container">
+            <button class="help-text shadow" onclick="clickHandle(this,'')">
+                목적지를 선택하면 경로를 안내합니다.
+            </button>
+            <div class="rst_wrap" style="overflow-y: auto;height: 236px;">
+                <div class="rst mCustomScrollbar" id="searchResult">
+
+                </div>
+            </div>
+        </div>
+        <div id="map_div" class="map_wrap" style="float:left"></div>
+    </div>
+    </div>
+    <button class="roundMenuBtn" id="menuBtn" onclick="clickHandle(this,'menu')"
+            style="      background-image: url({% static 'img/메뉴.svg' %}); ">
+
+
+    </button>
+    <script>
+        window.onload = () => {
+            initTmap();
+        }
+    </script>
+    <style>
+        button {
+            background-color: transparent !important;
+            border: none;
+        }
+    </style>
+    <script>
         // 5. goto navigation API
         function gotoNavigation(lat_lon_name) {
             console.log(lat_lon_name)
@@ -235,59 +291,46 @@
 
         }
 
-    </script>
-    <style>
-        input::placeholder {
-            color: white;
+        function clickHandle(obj, place) {
+            var $this = $(obj);
+            if ($this.hasClass('clicked')) {
+                if (place == "") {
+                } else if (place == "submit") {
+                    $('form').submit()
+                } else if (place == "refresh") {
+                    window.location.reload();
+                } else if (place == "menu") {
+                    goto('/')
+                } else if (place == "search") {
 
-        }
-    </style>
-    <div class="container place-search-result-container">
-        <div class="top-background"
+                } else {
+                    gotoNavigation(place)
 
-             style="
-                     background-image: url({% static 'img/마스크 그룹 5@2x.png' %})">
-            <div class="input_box">
-                <input
-                        placeholder="'호암초등학교'검색결과"
-                        type="search"
+                }
 
+                //here is your code for double click
+                //  return;a
+            } else {
+                $this.addClass('clicked');
 
-                        class="text_custom form-control" id="searchKeyword" name="searchKeyword"/>
-
-                <button id="btn_select"
-                ><img src="{% static 'img/검색.svg' %}" alt="검색 버튼"></button>
-            </div>
-        </div>
-
-
-        <div class="search_result_buttons_container">
-            <button class="help-text shadow">
-                목적지를 선택하면 경로를 안내합니다.
-            </button>
-            <div class="rst_wrap" style="overflow-y: auto;height: 236px;">
-                <div class="rst mCustomScrollbar" id="searchResult">
-
-                </div>
-            </div>
-        </div>
-        <div id="map_div" class="map_wrap" style="float:left"></div>
-    </div>
-    </div>
-    <button class="roundMenuBtn" id="menuBtn"
-            style="      background-image: url({% static 'img/메뉴.svg' %}); ">
+                if (place == "menu") {
+                    var utterThis = new SpeechSynthesisUtterance("홈으로");
+                    var synth = window.speechSynthesis;
+                    synth.speak(utterThis);
+                } else if (place == "search") {
+                    var utterThis = new SpeechSynthesisUtterance("검색창");
+                    var synth = window.speechSynthesis;
+                    synth.speak(utterThis);
+                } else {
+                    speech(obj)
+                }
 
 
-    </button>
-    <script>
-        window.onload = () => {
-            initTmap();
+                //your code for single click
+                setTimeout(function () {
+                    $this.removeClass('clicked');
+                }, 500);
+            }//end of else
         }
     </script>
-    <style>
-        button {
-            background-color: transparent !important;
-            border: none;
-        }
-    </style>
 {% endblock %}

@@ -5,14 +5,13 @@
 
     <div class="container place-search-result-container">
         <div class="top-background"
-
              style="
                      background-image: url({% static 'img/마스크 그룹 5@2x.png' %})">
 
             <div class="bus-stop-info">
                 <img style="width: 45px;
 height: 27px;" src="{% static 'img/버스정류장아이콘@2x.png' %}" alt="검색 버튼">
-                <button style="padding-left: 0px"
+                <button style="padding-left: 0px" onclick="clickHandle(this,'')"
                 >{{ busstop }} 버스도착정보
                 </button>
             </div>
@@ -21,14 +20,14 @@ height: 27px;" src="{% static 'img/버스정류장아이콘@2x.png' %}" alt="검
 
 
         <div class="bus-feead-container">
-            <button class="help-text ">
+            <button class="help-text " onclick="clickHandle(this,'refresh')">
                 탭하여 업데이트 해주세요
             </button>
             <div class="rst_wrap" style="overflow-y: auto;height: 390px;">
                 <div class="rst mCustomScrollbar" id="searchResult">       {% if data_list %}
                     {% for data in data_list %}
                         <button class="search_result shadow"
-
+                                onclick="clickHandle(this,'refresh')"
                                 class="busstop-item alert alert-info" role="alert">
                             <div class="left">
                                 <img style="width: 43px;
@@ -45,9 +44,10 @@ height: 43px;" src="{% static 'img/버스도착정보@2x.png' %}" alt="버스정
 
                     {% endfor %}
                 {% else %}
-                    <div class="alert alert-info" role="alert">
+                    <button onclick="clickHandle(this,'')" style="    width: 300px;
+    height: 60px;">
                         도착예정 버스가 없습니다.
-                    </div>
+                    </button>
                 {% endif %}
                 </div>
             </div>
@@ -55,7 +55,7 @@ height: 43px;" src="{% static 'img/버스도착정보@2x.png' %}" alt="버스정
         <div id="map_div" class="map_wrap" style="float:left"></div>
     </div>
     </div>
-    <button class="roundMenuBtn" id="menuBtn"
+    <button class="roundMenuBtn" id="menuBtn" onclick="clickHandle(this,'menu')"
             style="      background-image: url({% static 'img/메뉴.svg' %}); ">
 
 
@@ -72,4 +72,46 @@ height: 43px;" src="{% static 'img/버스도착정보@2x.png' %}" alt="버스정
             border: 2px solid #295FFF;
         }
     </style>
+    <script>
+        function clickHandle(obj, place) {
+            var $this = $(obj);
+            if ($this.hasClass('clicked')) {
+                if (place == "") {
+                } else if (place == "refresh") {
+                    window.location.reload();
+                } else if (place == "menu") {
+                    goto('/')
+                } else {
+                    goto(place)
+                }
+
+                //here is your code for double click
+                //  return;a
+            } else {
+                $this.addClass('clicked');
+                if (place == "menu") {
+                    var utterThis = new SpeechSynthesisUtterance("홈으로");
+                    var synth = window.speechSynthesis;
+                    synth.speak(utterThis);
+                } else {
+                    speechUpdate(obj)
+                }
+
+
+                //your code for single click
+                setTimeout(function () {
+                    $this.removeClass('clicked');
+                }, 500);
+            }//end of else
+        }
+
+        function speechUpdate(obj) {
+            //one click
+            var is = true;
+            var utterThis = new SpeechSynthesisUtterance(obj.innerText.replace("-", "다시").replace("번", "번 버스는 ").replace("분후", "분 후 도착예정입니다."));
+            var synth = window.speechSynthesis;
+            synth.speak(utterThis);
+            return is;
+        }
+    </script>
 {% endblock %}

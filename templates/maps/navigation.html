@@ -258,9 +258,9 @@
     <div class="bottom-black-container">
         <img style="margin-top: 31px; margin-bottom: 25px" src="{% static 'img/패스 60 (2).svg' %}" alt="장식 바">
 
-        <button class=" first_things_to_do" id="first_things_to_do"
+        <button class=" first_things_to_do" id="first_things_to_do" onclick="clickHandle(this,'')"
                 style="background-color: dodgerblue; height: 30px"></button>
-        <button class="total-result" id="result"></button>
+        <button class="total-result" id="result" onclick="clickHandle(this,'')"></button>
     </div>
     <button class="backToPedMenu" id="backToPedMenu"
             style="      background-image: url({% static 'img/길안내시작.svg' %}); ">
@@ -268,7 +268,7 @@
 
     </button>
 
-    <button class="roundMenuBtn" id="menuBtn"
+    <button class="roundMenuBtn" id="menuBtn" onclick="clickHandle(this,'menu')"
             style="      background-image: url({% static 'img/메뉴.svg' %}); ">
 
 
@@ -278,5 +278,48 @@
             border: none;
         }
     </style>
+    <script>
+        function clickHandle(obj, place) {
+            var $this = $(obj);
+            if ($this.hasClass('clicked')) {
+                if (place == "") {
+                } else if (place == "submit") {
+                    $('form').submit()
+                } else if (place == "refresh") {
+                    window.location.reload();
+                } else if (place == "menu") {
+                    goto('/')
+                } else if (place == "search") {
+
+                } else {
+                    gotoNavigation(place)
+
+                }
+
+                //here is your code for double click
+                //  return;a
+            } else {
+                $this.addClass('clicked');
+
+                if (place == "menu") {
+                    var utterThis = new SpeechSynthesisUtterance("홈으로");
+                    var synth = window.speechSynthesis;
+                    synth.speak(utterThis);
+                } else if (place == "search") {
+                    var utterThis = new SpeechSynthesisUtterance("검색창");
+                    var synth = window.speechSynthesis;
+                    synth.speak(utterThis);
+                } else {
+                    speech(obj)
+                }
+
+
+                //your code for single click
+                setTimeout(function () {
+                    $this.removeClass('clicked');
+                }, 500);
+            }//end of else
+        }
+    </script>
 {% endblock %}
 
