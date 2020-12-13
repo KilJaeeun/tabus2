@@ -315,10 +315,12 @@
 
                 if (place == "menu") {
                     var utterThis = new SpeechSynthesisUtterance("홈으로");
+                     utterThis.lang= 'ko-KR';
                     var synth = window.speechSynthesis;
                     synth.speak(utterThis);
                 } else if (place == "search") {
                     var utterThis = new SpeechSynthesisUtterance("검색창");
+                 utterThis.lang= 'ko-KR';
                     var synth = window.speechSynthesis;
                     synth.speak(utterThis);
                 } else {

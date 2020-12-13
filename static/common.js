@@ -12,6 +12,7 @@ function speech(obj) {
     var is = true;
 
     var utterThis = new SpeechSynthesisUtterance(obj.innerText);
+     utterThis.lang= 'ko-KR';
     var synth = window.speechSynthesis;
     synth.speak(utterThis);
     console.log("work")

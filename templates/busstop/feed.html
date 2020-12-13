@@ -91,6 +91,7 @@ height: 43px;" src="{% static 'img/버스도착정보@2x.png' %}" alt="버스정
                 $this.addClass('clicked');
                 if (place == "menu") {
                     var utterThis = new SpeechSynthesisUtterance("홈으로");
+                     utterThis.lang= 'ko-KR';
                     var synth = window.speechSynthesis;
                     synth.speak(utterThis);
                 } else {
@@ -109,6 +110,7 @@ height: 43px;" src="{% static 'img/버스도착정보@2x.png' %}" alt="버스정
             //one click
             var is = true;
             var utterThis = new SpeechSynthesisUtterance(obj.innerText.replace("-", "다시").replace("번", "번 버스는 ").replace("분후", "분 후 도착예정입니다."));
+           utterThis.lang= 'ko-KR';
             var synth = window.speechSynthesis;
             synth.speak(utterThis);
             return is;
