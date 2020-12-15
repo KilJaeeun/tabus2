@@ -26,7 +26,7 @@
     color: transparent;" id="btn_select" type="button" onclick=" clickHandle(this,'submit')"
                     >
                         <img src="{% static 'img/검색.svg' %}" alt="검색 버튼">검색버튼
-                    </button>
+                    <audio src="#" class="speech" hidden></audio></button>
                 </div>
             </form>
         </div>
@@ -35,7 +35,7 @@
         <div class="search_result_buttons_container">
             <button class="help-text shadow" onclick=" clickHandle(this,'')">
                 선택한 정류장의 버스도착정보를 확인하세요.
-            </button>
+            <audio src="#" class="speech" hidden></audio></button>
             <div class="rst_wrap" style="overflow-y: auto;height: 236px;">
                 <div class="rst mCustomScrollbar" id="searchResult">
                     {% for data in data_list %}
@@ -49,7 +49,7 @@
                                 <div class="top">        {{ data.1 }}</div>
                             </div>
 
-                        </button>
+                        <audio src="#" class="speech" hidden></audio></button>
 
 
                     {% endfor %}
@@ -63,7 +63,7 @@
             style="      background-image: url({% static 'img/메뉴.svg' %}); ">
 
 
-    </button>
+    <audio src="#" class="speech" hidden></audio></button>
 
 
     <style>

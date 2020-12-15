@@ -110,7 +110,7 @@
                                     + ")'>" +
                                     " <div class=\"left\"><img src='/static/img/장소%402x.png' /> </div>" + "" +
                                     " <div class=\"center\"> "
-                                    + name + "  </div>   </div></button>";
+                                    + name + "  </div>   </div><audio src='#' class='speech' hidden></audio></button>";
 
                                 // 마커들을 담을 배열에 마커 저장
                                 markerArr.push(marker);
@@ -220,7 +220,7 @@
                 <button id="btn_select" type="button" onclick=" clickHandle(this,'submit')" style="    height: 43px;overflow: hidden;
     color: transparent;"
                 ><img src="{% static 'img/검색.svg' %}" alt="검색 버튼">검색버튼
-                </button>
+                <audio src="#" class="speech" hidden></audio></button>
             </div>
         </div>
 
@@ -228,7 +228,7 @@
         <div class="search_result_buttons_container">
             <button class="help-text shadow" onclick="clickHandle(this,'')">
                 목적지를 선택하면 경로를 안내합니다.
-            </button>
+            <audio src="#" class="speech" hidden></audio></button>
             <div class="rst_wrap" style="overflow-y: auto;height: 236px;">
                 <div class="rst mCustomScrollbar" id="searchResult">
 
@@ -242,7 +242,7 @@
             style="      background-image: url({% static 'img/메뉴.svg' %}); ">
 
 
-    </button>
+    <audio src="#" class="speech" hidden></audio></button>
     <script>
         window.onload = () => {
             initTmap();

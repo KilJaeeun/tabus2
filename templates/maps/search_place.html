@@ -104,7 +104,7 @@
                                     + name
                                     + "</span>  <button type='button' name='sendBtn' ondbclick='poiDetail("
                                     + id
-                                    + ");'>상세보기</button></div></li>";
+                                    + ");'>상세보기<audio src='#' class='speech' hidden></audio></button></div></li>";
 
                                 // 마커들을 담을 배열에 마커 저장
                                 markerArr.push(marker);
@@ -281,7 +281,7 @@ border-radius: 30px;">
             <button id="btn_select"
                     style="background-color: transparent;
     border: none;"
-                    class=""><img src="{% static 'img/검색.svg' %}" alt="검색 버튼"></button>
+                    class=""><img src="{% static 'img/검색.svg' %}" alt="검색 버튼"><audio src="#" class="speech" hidden></audio></button>
         </div>
         <div class="voice-search" style="margin-top: 24px;
     /* width: 100%; */

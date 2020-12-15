@@ -13,7 +13,7 @@
 height: 27px;" src="{% static 'img/버스정류장아이콘@2x.png' %}" alt="검색 버튼">
                 <button style="padding-left: 0px" onclick="clickHandle(this,'')"
                 >{{ busstop }} 버스도착정보
-                </button>
+                <audio src="#" class="speech" hidden></audio></button>
             </div>
 
         </div>
@@ -22,7 +22,7 @@ height: 27px;" src="{% static 'img/버스정류장아이콘@2x.png' %}" alt="검
         <div class="bus-feead-container">
             <button class="help-text " onclick="clickHandle(this,'refresh')">
                 탭하여 업데이트 해주세요
-            </button>
+            <audio src="#" class="speech" hidden></audio></button>
             <div class="rst_wrap" style="overflow-y: auto;height: 390px;">
                 <div class="rst mCustomScrollbar" id="searchResult">       {% if data_list %}
                     {% for data in data_list %}
@@ -39,7 +39,7 @@ height: 43px;" src="{% static 'img/버스도착정보@2x.png' %}" alt="버스정
                             <div class="right">
                                 {{ data.1 }}분후
                             </div>
-                        </button>
+                        <audio src="#" class="speech" hidden></audio></button>
 
 
                     {% endfor %}
@@ -47,7 +47,7 @@ height: 43px;" src="{% static 'img/버스도착정보@2x.png' %}" alt="버스정
                     <button onclick="clickHandle(this,'')" style="    width: 300px;
     height: 60px;">
                         도착예정 버스가 없습니다.
-                    </button>
+                    <audio src="#" class="speech" hidden></audio></button>
                 {% endif %}
                 </div>
             </div>
@@ -59,7 +59,7 @@ height: 43px;" src="{% static 'img/버스도착정보@2x.png' %}" alt="버스정
             style="      background-image: url({% static 'img/메뉴.svg' %}); ">
 
 
-    </button>
+    <audio src="#" class="speech" hidden></audio></button>
 
     <style>
         button {

@@ -108,7 +108,7 @@
                     for (let btns in all_btns) {
                         let vari_btns = btns.replace("_btn", "");
                         vari_btns = eval(vari_btns)  // 변수화
-                        all_btns[btns].innerText = vari_btns;
+                        all_btns[btns].innerHTML = vari_btns+'<audio src="#" class="speech" hidden></audio>';
                         all_btns[btns].addEventListener("click", function (e) {
                             speech(vari_btns);
                         });
@@ -279,21 +279,21 @@
         <img style="margin-top: 31px; margin-bottom: 25px" src="{% static 'img/패스 60 (2).svg' %}" alt="장식 바">
 
         <button class=" first_things_to_do" id="first_things_to_do" onclick="clickHandle(this,'')"
-                style="background-color: dodgerblue; height: 30px"></button>
-        <button class="total-result" id="result" onclick="clickHandle(this,'')"></button>
+                style="background-color: dodgerblue; height: 30px"><audio src="#" class="speech" hidden></audio></button>
+        <button class="total-result" id="result" onclick="clickHandle(this,'')"><audio src="#" class="speech" hidden></audio></button>
     </div>
     <button class="backToPedMenu" id="backToPedMenu" onclick="clickHandle(this,'/search/')"
             style="   color: transparent; overflow: hidden;   background-image: url({% static 'img/길안내시작.svg' %}); "
     >
         길찾기 메뉴로
 
-    </button>
+    <audio src="#" class="speech" hidden></audio></button>
 
     <button class="roundMenuBtn" id="menuBtn" onclick="clickHandle(this,'menu')"
-            style="      background-image: url({% static 'img/메뉴.svg' %}); ">
+            style="  color: transparent;    background-image: url({% static 'img/메뉴.svg' %}); ">
 
-
-    </button>
+홈으로
+    <audio src="#" class="speech" hidden></audio></button>
     <style>
         button {
             border: none;
@@ -322,12 +322,7 @@
             } else {
                 $this.addClass('clicked');
 
-                if (place == "menu") {
-                    var utterThis = new SpeechSynthesisUtterance("홈으로");
-                  utterThis.lang= 'ko-KR';
-                    var synth = window.speechSynthesis;
-                    synth.speak(utterThis);
-                } else if (place == "search") {
+                 if (place == "search") {
                     var utterThis = new SpeechSynthesisUtterance("검색창");
                 utterThis.lang= 'ko-KR';
                     var synth = window.speechSynthesis;
