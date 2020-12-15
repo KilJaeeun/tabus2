@@ -15,21 +15,23 @@
                  align-items: center;
                  min-height: 100vh;
                  height: 100%;
-
-                 background-image: url({% static 'img/그룹 134@2x.png' %});
+background-color: black;
+                 {#background-image: url({% static 'img/그룹 134@2x.png' %});#}
+                 background-image: url({% static 'img/씨버스백.png' %});
 
 
                  ">
         <div class="logo"
              style="
-             display: flex;
+
+            display: flex;
              align-content: center;
              justify-content:  center;
              margin-top: 154px; margin-bottom: 144px">
-            <img src="{% static  'img/그룹 38.svg' %}">
+            <img style="      display: none;" src="{% static  'img/그룹 38.svg' %}">
         </div>
         <button type="button" onclick=" clickHandle(this ,'/search/')"
-                style="margin-bottom: 22px" class="main-box hover fontba-18-white center-center ">길찾기
+                style="margin-bottom: 22px" class="main-box hover font-18-white center-center ">길찾기
         <audio src="#" class="speech" hidden></audio></button>
 
         <button type="button" onclick=" clickHandle(this ,'/busstop/search/')"
