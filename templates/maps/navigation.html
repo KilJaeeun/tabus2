@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block meta %}
-    <meta http-equiv="refresh" content="50">
+    <meta http-equiv="refresh" content="30">
 {% endblock %}{% block content %}
     <script type="text/javascript">
         var map;
@@ -55,6 +55,15 @@
                 // 3. 경로탐색 API 사용요청
 //setCompassMode
 
+
+                if(currentLatitudeY==document.getElementById("destination_lat").value
+                && currentLongitudeX ==document.getElementById("destination_lon").value )
+                {
+                    if(confirm("목적지에 도달했습니다. 도착 예정 버스 화면으로 이동하시겠습니까?")){
+                        //호원고등학교입구(마을)[버스정류장]
+                        location.href='/busstop/search/?keyword='+document.getElementById("destination_name").value.replace("학교입구(마을)[버스정류장]","")
+                    }
+                }
 
                 let destName = document.getElementById("destination_name").value
                 const navi_data = {

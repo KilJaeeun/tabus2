@@ -10,6 +10,7 @@ urlpatterns = [
                   path('search/', views.search_place),
                   path('test/', views.test),
                   path('', views.main),
+                  path('main', views.main_ta_bus),
 
 
               ]

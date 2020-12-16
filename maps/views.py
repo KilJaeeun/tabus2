@@ -28,7 +28,8 @@ def search_place(request):
 def search_result(request):
     return render(request, 'maps/search_result.html')
 
-
+def main_ta_bus(request):
+    return render(request, 'maps/main_ta_bus.html')
 def main(request):
     return render(request, 'main.html')
 
