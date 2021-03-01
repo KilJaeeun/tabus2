@@ -1,6 +1,6 @@
 # tabus
 타버스는 시각장애인들의 버스 탑승 도우미 어플입니다. 현재 깃허브 제한 용량을 초과해 어플로 올리지 못하고 있습니다.
-
+https://user-images.githubusercontent.com/52051773/109439557-25903400-7a72-11eb-8c26-49486519d202.mp4
 
 ![app_design](https://user-images.githubusercontent.com/52051773/109439456-b581ae00-7a71-11eb-80de-d42e1b8e3a37.PNG)
 
